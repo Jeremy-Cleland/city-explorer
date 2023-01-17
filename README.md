@@ -17,6 +17,8 @@ Netlify:
 
 ## Architecture
 
+![Architecture Process](/Architecture.png)
+
 <!-- Provide a detailed description of the application design. What technologies (languages, libraries, etc) you're using, and any other relevant design information. -->
 
 Create-React-App, Axios and react-bootstrap
