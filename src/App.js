@@ -1,5 +1,4 @@
 import React from "react";
-import "./App.css";
 import axios from "axios";
 import { Card } from "react-bootstrap";
 
@@ -30,21 +29,16 @@ class App extends React.Component {
   };
   render() {
     return (
-      <>
-        <header>
+      <div className='app'>
+        <header className='header'>
           <h1>Expore Our Cities</h1>
         </header>
-        <form onSubmit={this.getCityData}>
-          <label htmlFor=''>Explore New City</label>
-          <input
-            placeholder='Enter a City'
-            type='text'
-            onInput={this.handleInput}
-          />
+        <form className='form' onSubmit={this.getCityData}>
+          <input className='input' type='text' onInput={this.handleInput} />
           <button type='submit'>Explore!</button>
         </form>
 
-        <Card>
+        <Card className='card'>
           <Card.Title>{this.state.cityData.display_name}</Card.Title>
           <Card.Body>
             <Card.Text>{this.state.cityData.lat}</Card.Text>
@@ -55,7 +49,7 @@ class App extends React.Component {
           src={`https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_API_KEY}&center=${this.state.cityData.lat},${this.state.cityData.lon}&zoom=10&size=600x600&format=png`}
           alt={"imagemapjkd"}
         />
-      </>
+      </div>
     );
   }
 }
