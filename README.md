@@ -43,10 +43,10 @@ For each of the lab features, make an estimate of the time it will take you to c
 
 Name of feature: **\*\***\*\***\*\***\_\_\_\_**\*\***\*\***\*\***
 
-Estimate of time needed to complete: **\_**
+Estimate of time needed to complete: **3 hours**
 
-Start time: **\_**
+Start time: **3:30**
 
-Finish time: **\_**
+Finish time: **5:30**
 
-Actual time needed to complete: **\_**
+Actual time needed to complete: **2 hours**
