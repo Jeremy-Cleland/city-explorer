@@ -1,0 +1,48 @@
+@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: "Caveat", cursive;
+}
+
+body {
+  margin: 0;
+  background-color: #171717;
+  color: #e5e5e5;
+}
+
+.app {
+  background-color: #222222;
+  padding: 2rem;
+  margin: 2rem auto;
+  width: 60rem;
+  max-width: 95%;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
+}
+
+.label {
+  flex: left;
+}
+
+.input {
+  margin: auto;
+  display: block;
+  width: 30%;
+  padding: 5px;
+  border-radius: 12px;
+}
+
+.button {
+  padding: 10px;
+  margin: 2rem;
+}
+
+.card {
+  width: 40rem;
+  margin: auto;
+}
