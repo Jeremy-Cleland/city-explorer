@@ -28,17 +28,6 @@ class App extends React.Component {
       cityData: axiosCityData.data[0],
     });
   };
-
-  // getCityImage = async (event) => {
-  //   event.preventDefault();
-
-  //   let url = `https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_API_KEY}&center=${this.state.cityData.lat},${this.state.cityData.lat}&zoom=10&size=1200x1200&format=png`;
-  //   let axiosCityData = await axios.get(url);
-  //   this.setState({
-  //     cityData: axiosCityData.data[0],
-  //   });
-  // };
-
   render() {
     return (
       <>
