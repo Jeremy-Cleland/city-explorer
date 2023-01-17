@@ -1,7 +1,6 @@
 import React from "react";
 import axios from "axios";
 import Form from "./components/Form";
-import { Card } from "react-bootstrap";
 
 class App extends React.Component {
   constructor(props) {
@@ -50,39 +49,19 @@ class App extends React.Component {
         <header className='header'>
           <h1>Expore Our Cities</h1>
         </header>
-        <Form getCityData={this.getCityData} handleInput={this.handleInput} />
 
-        <Card className='card'>
-          <Card.Title>{this.state.cityData.display_name}</Card.Title>
-          <Card.Body>
-            <Card.Text>{this.state.cityData.lat}</Card.Text>
-            <Card.Text>{this.state.cityData.lon}</Card.Text>
-          </Card.Body>
-        </Card>
-        <img src={this.state.cityMap} alt={this.state.cityData.display_name} />
+        {this.state.error ? (
+          <alert>{this.state.errorMessage}</alert>
+        ) : (
+          <Form
+            getCityData={this.getCityData}
+            handleInput={this.handleInput}
+            cityData={this.state.cityData}
+            cityMap={this.state.cityMap}
+          />
+        )}
       </div>
     );
   }
 }
 export default App;
-
-// {
-//   this.state.error ? (
-//     <Alert variant='warning'>{this.state.errorMessage}</Alert>
-//   ) : (
-//     <Container>
-//       <ListGroup as='list-group'>
-//         <ListGroup.Item>
-//           City: {this.state.cityData.display_name}
-//         </ListGroup.Item>
-//         <ListGroup.Item>
-//           Latitude: {this.state.cityData.lat}
-//         </ListGroup.Item>
-//         <ListGroup.Item>
-//           Longitude: {this.state.cityData.lon}
-//         </ListGroup.Item>
-//       </ListGroup>
-//       <Image src={this.state.cityMap}></Image>
-//     </Container>
-//   );
-// }
