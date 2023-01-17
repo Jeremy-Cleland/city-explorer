@@ -63,9 +63,7 @@ class App extends React.Component {
           </Card.Body>
         </Card>
         <img
-          src={`
-            "https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_API_KEY}&center=${this.state.cityData.lat},${this.state.cityData.lon}&zoom=10&size=600x600&format=png"
-          `}
+          src={`https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_API_KEY}&center=${this.state.cityData.lat},${this.state.cityData.lon}&zoom=10&size=600x600&format=png`}
           alt={"imagemapjkd"}
         />
       </>
