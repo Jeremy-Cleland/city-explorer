@@ -29,6 +29,16 @@ class App extends React.Component {
     });
   };
 
+  getCityImage = async (event) => {
+    event.preventDefault();
+
+    let url = `https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_API_KEY}&center=${this.state.cityData.lat},${this.state.cityData.lat}&zoom=10&size=1200x1200&format=png`;
+    let axiosCityData = await axios.get(url);
+    this.setState({
+      cityData: axiosCityData.data[0],
+    });
+  };
+
   render() {
     return (
       <>
@@ -52,6 +62,12 @@ class App extends React.Component {
             <Card.Text>{this.state.cityData.lon}</Card.Text>
           </Card.Body>
         </Card>
+        <img
+          src={
+            "https://maps.locationiq.com/v3/staticmap?key=pk.7a41640982f49c9767ca078569e240a7&center=43.5944677,-83.8888648&zoom=10&size=1200x1200&format=png"
+          }
+          alt={"imagemapjkd"}
+        />
       </>
     );
   }
