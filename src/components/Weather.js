@@ -6,16 +6,9 @@ class Weather extends React.Component {
     return (
       <>
         <Card>
-          <p>{this.props.weatherDate1}</p>
-          <p>{this.props.weatherinfoDay1}</p>
-        </Card>
-        <Card>
-          <p>{this.props.weatherDate2}</p>
-          <p>{this.props.weatherinfoDay2}</p>
-        </Card>
-        <Card>
-          <p>{this.props.weatherDate3}</p>
-          <p>{this.props.weatherinfoDay3}</p>
+          style={{ width: "30%" }}
+          <h1>{this.props.date} Forcast</h1>
+          <p>{this.props.description}</p>
         </Card>
       </>
     );
