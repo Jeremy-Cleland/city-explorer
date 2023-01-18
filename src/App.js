@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import Form from "./components/Form";
+import Weather from "./components/Weather";
 
 class App extends React.Component {
   constructor(props) {
@@ -11,6 +12,7 @@ class App extends React.Component {
       error: false,
       errorMessage: "",
       cityMap: "",
+      weatherData: {},
     };
   }
 
@@ -18,6 +20,27 @@ class App extends React.Component {
     this.setState({
       city: event.target.value,
     });
+  };
+
+  getWeatherData = async (event) => {
+    try {
+      let url = `${process.env.REACT_APP_SERVER}/weather?city=${this.state.city}`;
+      let weatherData = await axios.get(url);
+      this.setState({
+        weatherDate1: weatherData.data.dateTimeOne,
+        weatherinfoDay1: weatherData.data.descriptionOne,
+        weatherDate2: weatherData.data.dateTimeTwo,
+        weatherinfoDay2: weatherData.data.descriptionTwo,
+        weatherDate3: weatherData.data.dateTimeThree,
+        weatherinfoDay3: weatherData.data.descriptionThree,
+        error: false,
+      });
+    } catch (error) {
+      this.setState({
+        error: true,
+        errorMessage: `${error.message}`,
+      });
+    }
   };
 
   getCityData = async (event) => {
@@ -41,6 +64,8 @@ class App extends React.Component {
         errorMessage: `${error.message}`,
       });
     }
+
+    this.getWeatherData();
   };
 
   render() {
@@ -49,19 +74,23 @@ class App extends React.Component {
         <header className='header'>
           <h1>Expore Our Cities</h1>
         </header>
-
+        <Form
+          getCityData={this.getCityData}
+          handleInput={this.handleInput}
+          cityData={this.state.cityData}
+          cityMap={this.state.cityMap}
+        />
         {this.state.error ? (
           <alert>{this.state.errorMessage}</alert>
         ) : (
-          <Form
-            getCityData={this.getCityData}
-            handleInput={this.handleInput}
-            cityData={this.state.cityData}
-            cityMap={this.state.cityMap}
+          <Weather
+            getWeatherData={this.getWeatherData}
+            weatherData={this.state.weatherData}
           />
         )}
       </div>
     );
   }
 }
+
 export default App;
