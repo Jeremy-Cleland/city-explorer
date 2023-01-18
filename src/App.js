@@ -12,6 +12,7 @@ class App extends React.Component {
       error: false,
       errorMessage: "",
       cityMap: "",
+      weatherResponse: false,
       weatherData: {},
     };
   }
@@ -24,8 +25,9 @@ class App extends React.Component {
 
   getWeatherData = async (event) => {
     try {
-      let url = `${process.env.REACT_APP_SERVER}/weather?city=${this.state.city}`;
-      let weatherData = await axios.get(url);
+      let weatherData = await axios.get(
+        `${process.env.REACT_APP_SERVER}/weather?city_name=${this.state.city}`
+      );
       this.setState({
         weatherDate1: weatherData.data.dateTimeOne,
         weatherinfoDay1: weatherData.data.descriptionOne,
@@ -33,7 +35,7 @@ class App extends React.Component {
         weatherinfoDay2: weatherData.data.descriptionTwo,
         weatherDate3: weatherData.data.dateTimeThree,
         weatherinfoDay3: weatherData.data.descriptionThree,
-        error: false,
+        weatherResponse: true,
       });
     } catch (error) {
       this.setState({
@@ -86,6 +88,13 @@ class App extends React.Component {
           <Weather
             getWeatherData={this.getWeatherData}
             weatherData={this.state.weatherData}
+            weatherDate1={this.state.weatherDate1}
+            weatherinfoDay1={this.state.weatherinfoDay1}
+            weatherDate2={this.state.weatherDate2}
+            weatherinfoDay2={this.state.weatherinfoDay2}
+            weatherDate3={this.state.weatherData3}
+            weatherinfoDay3={this.state.weatherinfoDay3}
+            weatherTypeThree={this.state.weatherTypeThree}
           />
         )}
       </div>
