@@ -86,6 +86,12 @@ class App extends React.Component {
           <Weather
             getWeatherData={this.getWeatherData}
             weatherData={this.state.weatherData}
+            weatherDate1={this.state.weatherDate1}
+            weatherinfoDay1={this.state.weatherinfoDay1}
+            weatherDate2={this.state.weatherDate2}
+            weatherinfoDay2={this.state.weatherinfoDay2}
+            weatherDate3={this.state.weatherDate3}
+            weatherinfoDay3={this.state.weatherinfoDay3}
           />
         )}
       </div>
