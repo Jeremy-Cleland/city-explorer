@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
-import Form from "./components/Form";
-import Main from "./components/Main";
+import City from "./components/City";
+import Weather from "./components/Weather";
 
 class App extends React.Component {
   constructor(props) {
@@ -12,12 +12,18 @@ class App extends React.Component {
       error: false,
       errorMessage: "",
       cityMap: "",
-      weatherError: false,
       weatherData: [],
+      weatherError: false,
+      citySelected: false,
     };
   }
+  handleInput = (event) => {
+    this.setState({
+      city: event.target.value,
+    });
+  };
 
-  getCityData = async (event) => {
+  handleSubmit = async (event) => {
     event.preventDefault();
 
     try {
@@ -28,6 +34,8 @@ class App extends React.Component {
       let lon = axiosCityData.data[0].lon;
       let lat = axiosCityData.data[0].lat;
 
+      this.getWeatherData(lat, lon);
+
       let cityMap = `https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_API_KEY}&center=${lat},${lon}&zoom=10`;
 
       this.setState({
@@ -36,26 +44,26 @@ class App extends React.Component {
         error: false,
       });
     } catch (error) {
+      console.log(error.message);
       this.setState({
         error: true,
-        errorMessage: `${error.message}`,
+        errorMessage: error.message,
       });
     }
   };
 
   getWeatherData = async (lat, lon) => {
     try {
-      let url = `${process.env.REACT_APP_SERVER}/weather?lat=${lat}&lon=${lon}searchQuery=${this.state.city}`;
+      let url = `${process.env.REACT_APP_SERVER}/weather?lat=${lat}&lon=${lon}&searchQuery=${this.state.city}`;
       let axiosWeatherData = await axios.get(url);
-
+      console.log("WEATHER: ", axiosWeatherData.data);
       this.setState({
         weatherData: axiosWeatherData.data,
-        weatherError: false,
       });
     } catch (error) {
+      console.log(error.message);
       this.setState({
         error: true,
-        errorMessage: `${error.message}`,
       });
     }
   };
@@ -63,19 +71,19 @@ class App extends React.Component {
   render() {
     return (
       <div className='app'>
-        <header className='header'>
-          <h1>Expore Our Cities</h1>
-        </header>
-        <Form
-          getCityData={this.getCityData}
-          handleInput={this.handleInput}
-          cityData={this.state.cityData}
-          cityMap={this.state.cityMap}
-        />
+        <h1>Expore Our Cities</h1>
+        <form className='form' onSubmit={this.handleSubmit}>
+          <input className='input' type='text' onInput={this.handleInput} />
+          <button type='submit'>Explore!</button>
+        </form>
+
         {this.state.error ? (
-          <alert>{this.state.errorMessage}</alert>
+          <p>{this.state.errorMessage}</p>
         ) : (
-          <Main weatherData={this.state.weatherData} />
+          <>
+            <City cityData={this.state.cityData} cityMap={this.state.cityMap} />
+            <Weather weatherData={this.state.weatherData} />
+          </>
         )}
       </div>
     );
