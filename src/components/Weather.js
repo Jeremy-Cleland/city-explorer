@@ -1,19 +1,24 @@
 import React from "react";
+import { Card } from "react-bootstrap";
 
 class Weather extends React.Component {
   render() {
     return (
-      <>
-        {this.props.weatherData.map((day, indx) => {
+      <div>
+        {this.props.weatherData.map((day, index) => {
           return (
-            <>
-              <h3>Forcaast</h3>
-              <p>Date: {day.date}</p>
-              <p>Description: {day.description}</p>
-            </>
+            <Card className='card' key={index}>
+              <Card.Title>{day.datetime}</Card.Title>
+              <Card.Body>
+                <p>Description: {day.weather.description}</p>
+                <p>Low Temp: {day.low_temp}</p>
+                <p>High Temp: {day.high_temp}</p>
+                <hr />
+              </Card.Body>
+            </Card>
           );
         })}
-      </>
+      </div>
     );
   }
 }

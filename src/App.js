@@ -14,7 +14,6 @@ class App extends React.Component {
       cityMap: "",
       weatherData: [],
       weatherError: false,
-      citySelected: false,
     };
   }
   handleInput = (event) => {
@@ -53,17 +52,19 @@ class App extends React.Component {
   };
 
   getWeatherData = async (lat, lon) => {
+    let weatherUrl = `http://api.weatherbit.io/v2.0/forecast/daily?key=0b159dd21b944db5bf40ec870d8f67c5&lat=${lat}&lon=${lon}&days=5&units=I`;
+
+    let weatherData = await axios.get(weatherUrl);
+    this.setState({
+      weatherData: weatherData.data.data,
+    });
+    console.log(weatherData.data);
     try {
-      let url = `${process.env.REACT_APP_SERVER}/weather?lat=${lat}&lon=${lon}&searchQuery=${this.state.city}`;
-      let axiosWeatherData = await axios.get(url);
-      console.log("WEATHER: ", axiosWeatherData.data);
-      this.setState({
-        weatherData: axiosWeatherData.data,
-      });
     } catch (error) {
       console.log(error.message);
       this.setState({
-        error: true,
+        weatherError: true,
+        errorMessage: error.message,
       });
     }
   };
