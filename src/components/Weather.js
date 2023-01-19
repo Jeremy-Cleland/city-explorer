@@ -1,13 +1,13 @@
-import React from "react";
-import { Card } from "react-bootstrap";
+import React from 'react';
+import { Card } from 'react-bootstrap';
 
 class Weather extends React.Component {
   render() {
     return (
       <>
-        {this.props.weatherData.map((day, idx) => {
+        {this.props.weather.map((day, idx) => {
           return (
-            <Card style={{ width: "30rem" }} key={idx}>
+            <Card style={{ width: '30rem' }} key={idx}>
               <Card.Body>
                 <Card.Title>Date: {day.date}</Card.Title>
                 <Card.Text>Weather: {day.description}</Card.Text>

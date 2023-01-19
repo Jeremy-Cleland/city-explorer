@@ -50,3 +50,19 @@ Start time: **3:30**
 Finish time: **6:30**
 
 Actual time needed to complete: **3 hours**
+
+Name of feature: Weather Api
+Estimate of time needed to complete: 2hrs
+
+Start time: 640
+
+Finish time: 940
+
+Actual time needed to complete: 3
+
+Name of feature: Movie Api
+Estimate of time needed to complete: 2hrs
+
+Start time: 940
+Finish time: 1140
+Actual time needed to complete: 2hrs

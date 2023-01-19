@@ -1,5 +1,5 @@
-import React from "react";
-import Card from "react-bootstrap/Card";
+import React from 'react';
+import Card from 'react-bootstrap/Card';
 
 class Movies extends React.Component {
   constructor(props) {
@@ -9,10 +9,10 @@ class Movies extends React.Component {
   render() {
     return (
       <>
-        {this.props.movieData.map((movie, idx) => (
-          <Card style={{ width: "18rem" }} key={idx}>
+        {this.props.movie.map((movie, idx) => (
+          <Card style={{ width: '60rem' }} key={idx}>
             <Card.Body>
-              {/* <Card.Img variant='top' src={movie.image_url} /> */}
+              <Card.Img src={movie.image_url} alt={movie.title} />
               <Card.Title>Title: {movie.title}</Card.Title>
               <Card.Text>Release Date: {movie.release_date}</Card.Text>
               <Card.Text>Overview: {movie.overview}</Card.Text>
