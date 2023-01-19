@@ -1,20 +1,15 @@
-import React from "react";
-import { Card } from "react-bootstrap";
+import React from 'react';
+import { Card } from 'react-bootstrap';
 
 class City extends React.Component {
   render() {
     return (
       <>
-        <Card className='card'>
+        <Card style={{ width: '60rem' }}>
           <Card.Title>{this.props.cityData.display_name}</Card.Title>
           <Card.Body>
-            <Card.Text>Latitude: {this.props.cityData.lat}</Card.Text>
-            <Card.Text>Longitude: {this.props.cityData.lon}</Card.Text>
+            <Card.Img src={this.props.cityMap} alt={this.props.cityData.display_name} />
           </Card.Body>
-          <Card.Img
-            src={this.props.cityMap}
-            alt={this.props.cityData.display_name}
-          />
         </Card>
       </>
     );
