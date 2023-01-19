@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import City from "./components/City";
 import Weather from "./components/Weather";
+import Movies from "./components/Movies";
 
 class App extends React.Component {
   constructor(props) {
@@ -14,6 +15,7 @@ class App extends React.Component {
       cityMap: "",
       weatherData: [],
       weatherError: false,
+      movieData: [],
     };
   }
   handleInput = (event) => {
@@ -52,18 +54,33 @@ class App extends React.Component {
   };
 
   getWeatherData = async (lat, lon) => {
-    let weatherUrl = `http://api.weatherbit.io/v2.0/forecast/daily?key=0b159dd21b944db5bf40ec870d8f67c5&lat=${lat}&lon=${lon}&days=5&units=I`;
-
-    let weatherData = await axios.get(weatherUrl);
-    this.setState({
-      weatherData: weatherData.data.data,
-    });
-    console.log(weatherData.data);
     try {
-    } catch (error) {
-      console.log(error.message);
+      let weatherData = await axios.get(
+        `${process.env.REACT_APP_SERVER}/weather?lat=${lat}&lon=${lon}`
+      );
       this.setState({
-        weatherError: true,
+        weatherData: weatherData.data,
+      });
+    } catch (error) {
+      this.setState({
+        error: true,
+        errorMessage: error.message,
+      });
+    }
+  };
+
+  handleMovie = async () => {
+    try {
+      let movieData = await axios.get(
+        `${process.env.REACT_APP_SERVER}/movies?city=${this.state.city}`
+      );
+
+      this.setState({
+        movieData: movieData.data,
+      });
+    } catch (error) {
+      this.setState({
+        error: true,
         errorMessage: error.message,
       });
     }
@@ -84,6 +101,7 @@ class App extends React.Component {
           <>
             <City cityData={this.state.cityData} cityMap={this.state.cityMap} />
             <Weather weatherData={this.state.weatherData} />
+            <Movies movieData={this.state.movieData} />
           </>
         )}
       </div>
