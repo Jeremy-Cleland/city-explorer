@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+
 import City from "./components/City";
 import Weather from "./components/Weather";
 import Movies from "./components/Movies";
@@ -14,7 +15,6 @@ class App extends React.Component {
       errorMessage: "",
       cityMap: "",
       weatherData: [],
-      weatherError: false,
       movieData: [],
     };
   }
@@ -60,6 +60,7 @@ class App extends React.Component {
       );
       this.setState({
         weatherData: weatherData.data,
+        error: false,
       });
     } catch (error) {
       this.setState({
@@ -69,12 +70,11 @@ class App extends React.Component {
     }
   };
 
-  handleMovie = async () => {
+  handleMovie = async (city) => {
     try {
       let movieData = await axios.get(
-        `${process.env.REACT_APP_SERVER}/movies?city=${this.state.city}`
+        `${process.env.REACT_APP_SERVER}/movies?city=${city}`
       );
-
       this.setState({
         movieData: movieData.data,
       });

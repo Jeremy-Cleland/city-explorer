@@ -12,7 +12,7 @@ class Movies extends React.Component {
         {this.props.movieData.map((movie, idx) => (
           <Card style={{ width: "18rem" }} key={idx}>
             <Card.Body>
-              {/* <Card.Img variant='top' src={movie.image_url} /> */}
+              <Card.Img src={movie.image_url} alt={movie.title} />
               <Card.Title>Title: {movie.title}</Card.Title>
               <Card.Text>Release Date: {movie.release_date}</Card.Text>
               <Card.Text>Overview: {movie.overview}</Card.Text>

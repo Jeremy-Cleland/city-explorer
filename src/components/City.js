@@ -8,15 +8,13 @@ class City extends React.Component {
         <Card className='card'>
           <Card.Title>{this.props.cityData.display_name}</Card.Title>
           <Card.Body>
-            <p>Latitude: {this.props.cityData.lat}</p>
-            <p>Longitude: {this.props.cityData.lon}</p>
-            <div>
-              <img
-                src={this.props.cityMap}
-                alt={this.props.cityData.display_name}
-              />
-            </div>
+            <Card.Text>Latitude: {this.props.cityData.lat}</Card.Text>
+            <Card.Text>Longitude: {this.props.cityData.lon}</Card.Text>
           </Card.Body>
+          <Card.Img
+            src={this.props.cityMap}
+            alt={this.props.cityData.display_name}
+          />
         </Card>
       </>
     );
