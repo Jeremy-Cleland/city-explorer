@@ -41,7 +41,7 @@ button:hover:after {
   right: 10px;
 }
 button:after {
-  content: '\00BB';
+  content: "\00BB";
   position: absolute;
   opacity: 0;
   font-size: 20px;
@@ -52,18 +52,9 @@ button:after {
 }
 
 .card {
-  background-color: #171717;
   margin: auto;
-  color: #fff;
+  color: #f6f6f6;
 }
-
-div.container {
-  background-color: #171717;
-}
-.card-title h5 {
-  background-color: #171717;
-}
-
 .card-body {
   background-color: #242424;
 }

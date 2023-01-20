@@ -1,0 +1,8 @@
+.weather-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: center;
+  row-gap: 15px;
+  padding: 10px;
+  justify-items: stretch;
+}
