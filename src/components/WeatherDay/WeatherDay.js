@@ -1,15 +1,18 @@
 import React from "react";
 import { Card } from "react-bootstrap";
+import "./WeatherDay.css";
 
 export default class WeatherDay extends React.Component {
   render() {
     return (
-      <Card style={{ width: "60rem" }} key={this.props.idx}>
+      <Card classname='weatherday-card' key={this.props.idx}>
         <Card.Body>
-          <Card.Title>Weather For:{this.props.date}</Card.Title>
+          <Card.Title>{this.props.date}</Card.Title>
           <Card.Text>
-            Today will be {this.props.description} with a high temp of
-            {this.props.high_temp} and of low of {this.props.low_temp}
+            {this.props.description}
+            <hr />
+            High Temp: {this.props.high_temp} <hr />
+            Low Temp: {this.props.low_temp}
           </Card.Text>
         </Card.Body>
       </Card>

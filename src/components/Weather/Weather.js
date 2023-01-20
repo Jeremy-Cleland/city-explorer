@@ -1,11 +1,12 @@
 import React from "react";
+import "./Weather.css";
 
 import WeatherDay from "../WeatherDay/WeatherDay";
 
 export default class Weather extends React.Component {
   render() {
     return (
-      <div>
+      <div className='weather-container'>
         {this.props.weather.map((day, idx) => (
           <WeatherDay
             key={idx}
