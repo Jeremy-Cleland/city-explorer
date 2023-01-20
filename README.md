@@ -25,6 +25,8 @@ As a user, I want to see a map of the city so that I can see the layout of the a
 
 Create-React-App, Axios and react-bootstrap
 
+---
+
 ## Change Log
 
 <!-- Use this area to document the iterative changes made to your application as each feature is successfully implemented. Use time stamps. Here's an example:
@@ -33,13 +35,7 @@ Create-React-App, Axios and react-bootstrap
 
 01-16-2023 4:59pm - Application has GET route for the location resource and returns lat/lot and imagery.
 
-## Credit and Collaborations
-
-<!-- Give credit (and a link) to other people or resources that helped you build this application. -->
-
-[Create React App](https://create-react-app.dev)
-
-Time Estimates
+---
 
 Name of feature: **synchronous code, and APIs**
 
@@ -51,6 +47,8 @@ Finish time: **6:30**
 
 Actual time needed to complete: **3 hours**
 
+---
+
 Name of feature: Weather Api
 Estimate of time needed to complete: 2hrs
 
@@ -60,9 +58,31 @@ Finish time: 940
 
 Actual time needed to complete: 3
 
+---
+
 Name of feature: Movie Api
 Estimate of time needed to complete: 2hrs
 
 Start time: 940
 Finish time: 1140
 Actual time needed to complete: 2hrs
+
+---
+
+Name of feature: Modulized backend
+
+Estimate of time needed to complete: 2 hours
+
+Start time: 4:30
+
+Finish time: 6:30
+
+Actual time needed to complete: 2 hours
+
+## Credit and Collaborations
+
+<!-- Give credit (and a link) to other people or resources that helped you build this application. -->
+
+[Create React App](https://create-react-app.dev)
+
+Time Estimates
