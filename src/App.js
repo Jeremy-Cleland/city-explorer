@@ -1,26 +1,26 @@
-import React from 'react';
-import './App.css';
-import axios from 'axios';
-import City from './components/City';
-import Weather from './components/Weather';
-import Movies from './components/Movies';
-import { Container } from 'react-bootstrap';
+import React from "react";
+import "./App.css";
+import axios from "axios";
+import City from "./components/City/City";
+import Weather from "./components/Weather/Weather";
+import Movies from "./components/Movies/Movies";
+import { Container, Alert } from "react-bootstrap";
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      city: '',
+      city: "",
       cityData: [],
-      cityMap: '',
+      cityMap: "",
       weather: [],
       movie: [],
       error: false,
-      errorMessage: '',
+      errorMessage: "",
       weatherError: false,
-      weatherErrorMessage: '',
+      weatherErrorMessage: "",
       movieError: false,
-      movieErrorMessage: '',
+      movieErrorMessage: "",
     };
   }
   handleInput = (event) => {
@@ -48,7 +48,7 @@ class App extends React.Component {
         {
           cityData: cityDataFromAxios.data[0],
           error: false,
-          errorMessage: '',
+          errorMessage: "",
         },
         this.callApis
       );
@@ -69,7 +69,7 @@ class App extends React.Component {
       this.setState({
         weather: weatherFromAxios.data,
         weatherError: false,
-        weatherErrorMessage: '',
+        weatherErrorMessage: "",
       });
     } catch (error) {
       this.setState({
@@ -88,7 +88,7 @@ class App extends React.Component {
       this.setState({
         movie: movieFromAxios.data,
         movieError: false,
-        movieErrorMessage: '',
+        movieErrorMessage: "",
       });
     } catch (error) {
       this.setState({
@@ -120,11 +120,11 @@ class App extends React.Component {
           <h1>Expore Our Cities</h1>
         </header>
         <form onSubmit={this.getCity}>
-          <input type="text" onInput={this.handleInput} />
-          <button type="submit">Explore!</button>
+          <input type='text' onInput={this.handleInput} />
+          <button type='submit'>Explore!</button>
         </form>
         {this.state.error ? (
-          <Alert variant="warning">
+          <Alert variant='warning'>
             <Alert.Heading>ERROR</Alert.Heading>
             <p>{this.state.errorMessage}</p>
           </Alert>
